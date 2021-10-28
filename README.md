@@ -14,11 +14,13 @@
 
 ## Screenshot of Kubernetes Engine
 * Kubernetes.png_1 & Kubernetes_2.png
+The following screenshots are services running with public IP
 * Hadoop.png
 * Jupyter_notebook.png
 * Sonarqube_1.png Sonarqube_2.png
 * Spark.png
 * terminal_1.png & terminal_2.png
+Please refer to Cloud-Infra-CheckPoint-Readme.pdf for more screenshots
 
 ## Steps to run docker images on Kubernetes Engine
 Please refer to Cloud-Infra-CheckPoint-Readme.pdf for the steps along with screenshots
