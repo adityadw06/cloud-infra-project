@@ -13,7 +13,7 @@
 * Driver/Terminal - in folder Terminal, URL: https://hub.docker.com/r/adityadw/terminal
 
 ## Screenshot of Kubernetes Engine
-* Kubernetes.png_1 & Kubernetes_2.png
+* Kubernetes_1.png & Kubernetes_2.png
 
 The following screenshots are services running with public IP
 * Hadoop.png
