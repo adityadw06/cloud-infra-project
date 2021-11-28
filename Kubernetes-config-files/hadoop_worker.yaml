@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: worker-hadoop
+  labels:
+    app: worker-hadoop
+spec:
+  selector:
+     matchLabels:
+       app: worker-hadoop
+  replicas: 2
+  minReadySeconds: 15
+  strategy:
+    type: RollingUpdate
+    rollingUpdate: 
+      maxUnavailable: 1
+      maxSurge: 1 
+  template:
+    metadata:
+      labels:
+        app: worker-hadoop
+    spec:
+      containers:
+        - image: bde2020/hadoop-datanode
+          imagePullPolicy: Always
+          name: worker-hadoop
+          env:
+            - name: SERVICE_PRECONDITION
+              value: master-hadoop:9000
+            - name: CORE_CONF_fs_defaultFS
+              value: "hdfs://master-hadoop:9000"
+            - name: CORE_CONF_hadoop_http_staticuser_use
+              value: "root"
+            - name: CORE_CONF_hadoop_proxyuser_hue_hosts
+              value: "*"
+            - name: CORE_CONF_hadoop_proxyuser_hue_groups
+              value: "*"
+            - name: CORE_CONF_io_compression_codecs
+              value: "org.apache.hadoop.io.compress.SnappyCodec"
+            - name: HDFS_CONF_dfs_webhdfs_enabled
+              value: "true"
+            - name: HDFS_CONF_dfs_permissions_enabled
+              value: "false"
+            - name: HDFS_CONF_dfs_namenode_datanode_registration_ip___hostname___check
+              value: "false"

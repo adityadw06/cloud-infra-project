@@ -1,0 +1,11 @@
+FROM python:latest
+RUN pip install Flask
+RUN pip install requests
+COPY . /usr/src/myapp
+WORKDIR /usr/src/myapp
+ENV HADOOP_URL http://34.136.215.85:9870/
+ENV SPARK_URL http://34.135.56.132:8080/
+ENV JUPYTER_URL http://34.133.108.43:8888/
+ENV SONAR_URL http://35.222.228.36:9000/
+EXPOSE 8080
+CMD ["python3","gui.py"]

@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spark
+  labels:
+    app: spark
+spec:
+  selector:
+     matchLabels:
+       app: spark
+  replicas: 2
+  minReadySeconds: 15
+  strategy:
+    type: RollingUpdate
+    rollingUpdate: 
+      maxUnavailable: 1
+      maxSurge: 1 
+  template:
+    metadata:
+      labels:
+        app: spark
+    spec:
+      containers:
+        - image: bitnami/spark
+          imagePullPolicy: Always
+          name: spark
+          ports:
+            - containerPort: 8080

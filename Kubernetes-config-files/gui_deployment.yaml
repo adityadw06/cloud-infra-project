@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gui
+  labels:
+    app: gui
+spec:
+  selector:
+     matchLabels:
+       app: gui
+  replicas: 2
+  minReadySeconds: 15
+  strategy:
+    type: RollingUpdate
+    rollingUpdate: 
+      maxUnavailable: 1
+      maxSurge: 1 
+  template:
+    metadata:
+      labels:
+        app: gui
+    spec:
+      containers:
+        - image: adityadw/gui
+          imagePullPolicy: Always
+          name: gui
+          env:
+          - name: HADOOP_URL
+            value: http://34.136.215.85:9870/
+          - name: SPARK_URL
+            value: http://34.135.56.132:8080/
+          - name: JUPYTER_URL
+            value: http://34.135.31.100:8888/
+          - name: SONAR_URL
+            value: http://35.222.228.36:9000/
+          ports:
+            - containerPort: 8080
