@@ -1,3 +1,6 @@
+# Code Walkthrough & Demo Video URL
+https://drive.google.com/file/d/1nUQNhi3fF5jw2wZDu0Qkg8niKtjlY9Ya/view?usp=sharing
+
 # Docker Images URL
 * Jupyter Notebook - https://hub.docker.com/r/adityadw/jupyter_notebook
 * Sonarqube + Sonarscanner - https://hub.docker.com/r/adityadw/sonarqube_sonarscanner
@@ -111,6 +114,12 @@ value: http://35.222.228.36:9000/
 * kubectl apply -f gui_service.yaml - to deploy the service
 
 ## For screenshots and detailed steps refer to - Cloud-Infra-Project-Readme.pdf
+## Appendix
+To run a sample Sonar-Scanner using the new password that was set, one can use kubectl get pods to get the pod ID of sonarqube and then the following two commands to run sample scan
+kubectl exec --stdin --tty <pod-id> -- /bin/bash
+sonar-scanner -D sonar.password='new_password'
+For checkpoint related content please refer to folder "Checkpoint-files"
+
 ## References
 https://hub.docker.com/_/microsoft-mmlspark-release, https://github.com/big-data-europe/docker-hadoop/blob/master/docker-compose.yml, https://www.datamechanics.co/blog-post/optimized-spark-docker-images-now-available, https://computingforgeeks.com/how-to-install-apache-spark-on-ubuntu-debian/, https://docs.sonarqube.org/latest/analysis/scan/sonarscanner/
 https://www.geeksforgeeks.org/python-3-input-function/
